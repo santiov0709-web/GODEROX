@@ -1,0 +1,107 @@
+/* GODEROX — LUXURY EDITORIAL DESIGN SYSTEM (INSP. IMPERIAL CLOTHES) */
+
+:root {
+  /* Color Palette — Deep Obsidian, Cream & Warm Gold */
+  --bg-primary: #0A0A0A;
+  --bg-secondary: #121212;
+  --bg-card: #161616;
+  --bg-card-hover: #1F1F1F;
+  --bg-cream: #F5F0EB;
+  --bg-cream-card: #FFFFFF;
+  --bg-glass: rgba(10, 10, 10, 0.90);
+  
+  --text-primary: #FFFFFF;
+  --text-secondary: #A3A3A3;
+  --text-muted: #666666;
+  --text-dark: #111111;
+  --text-dark-muted: #666666;
+  
+  /* Accent Colors — Refined Brushed Gold */
+  --gold-primary: #C8A55B;
+  --gold-light: #E8D5A3;
+  --gold-dark: #9A7B39;
+  --gold-gradient: linear-gradient(135deg, #E8D5A3 0%, #C8A55B 50%, #9A7B39 100%);
+  --gold-glow: rgba(200, 165, 91, 0.15);
+  --gold-border: rgba(200, 165, 91, 0.3);
+
+  --border-light: rgba(255, 255, 255, 0.08);
+  --border-dark: rgba(0, 0, 0, 0.08);
+  --border-gold: rgba(200, 165, 91, 0.25);
+
+  /* Typography — Editorial & High-Fashion (Trirong / Cormorant Garamond / DM Sans) */
+  --font-display: 'Trirong', 'Cormorant Garamond', Georgia, serif;
+  --font-logo: 'Cinzel', 'Trajan Pro', Georgia, serif;
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 7rem;
+
+  /* Layout */
+  --max-width: 1400px;
+  --header-height: 80px;
+
+  /* Shadows */
+  --shadow-subtle: 0 8px 30px rgba(0, 0, 0, 0.5);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.15s ease;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* Headings — Editorial Elegance */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+::selection {
+  background: var(--gold-primary);
+  color: #000;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-primary);
+}

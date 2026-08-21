@@ -1,0 +1,78 @@
+/* GODEROX CLEAN ANIMATION SYSTEM */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInSlow {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-delay-1 { animation-delay: 0.15s; }
+.animate-delay-2 { animation-delay: 0.3s; }
+.animate-delay-3 { animation-delay: 0.45s; }
+
+@keyframes shimmerGold {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes pulseGlowRing {
+  0%, 100% { transform: scale(1); opacity: 0.6; box-shadow: 0 0 30px rgba(200, 165, 91, 0.3); }
+  50% { transform: scale(1.08); opacity: 1; box-shadow: 0 0 60px rgba(232, 213, 163, 0.6); }
+}
+
+.gold-text-shimmer {
+  background: linear-gradient(90deg, #FFFFFF 0%, #E8D5A3 25%, #FFFFFF 50%, #C8A55B 75%, #FFFFFF 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmerGold 5s linear infinite;
+  display: inline-block;
+}
+
+/* ─── SCROLL REVEAL ANIMATION SYSTEM ─── */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.12s; }
+.reveal-delay-2 { transition-delay: 0.24s; }
+.reveal-delay-3 { transition-delay: 0.36s; }
+.reveal-delay-4 { transition-delay: 0.48s; }
+
+/* ─── SEQUENTIAL ALTERNATING SPOTLIGHT SHOW KEYFRAMES (GPU ULTRA FAST 60FPS) ─── */
+@keyframes spotlightPhase1 {
+  0%, 100% { opacity: 0.85; }
+  25%, 75% { opacity: 0.08; }
+}
+
+@keyframes spotlightPhase2 {
+  0%, 50%, 100% { opacity: 0.08; }
+  25% { opacity: 0.85; }
+}
+
+@keyframes spotlightPhase3 {
+  0%, 25%, 100% { opacity: 0.08; }
+  50% { opacity: 0.85; }
+}
+
+@keyframes spotlightPhase4 {
+  0%, 50% { opacity: 0.08; }
+  75% { opacity: 0.85; }
+}

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GODEROX — Panel Administrativo</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="/src/styles/admin.css" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     LOGIN SCREEN
+════════════════════════════════════════════════ -->
+<div id="admin-login-screen">
+  <img src="/images/goderox_official_logo.jpeg" alt="GODEROX" class="login-logo" />
+  <div class="login-brand">PANEL ADMINISTRATIVO</div>
+
+  <div class="login-card">
+    <h1 class="login-title">Bienvenido</h1>
+    <p class="login-sub">Inicia sesión para acceder al panel de gestión de GODEROX.</p>
+
+    <div class="login-error" id="login-error-msg">
+      Credenciales incorrectas. Verifica tu email y contraseña.
+    </div>
+
+    <form id="login-form">
+      <div class="form-group">
+        <label class="form-label" for="login-email">Email</label>
+        <input
+          type="email" id="login-email" class="form-input"
+          placeholder="admin@goderox.com" required autocomplete="email"
+        />
+      </div>
+      <div class="form-group" style="margin-bottom: 1.75rem;">
+        <label class="form-label" for="login-password">Contraseña</label>
+        <input
+          type="password" id="login-password" class="form-input"
+          placeholder="••••••••" required autocomplete="current-password"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+        <span id="login-btn-text">ACCEDER AL PANEL</span>
+        <div class="spinner" id="login-spinner" style="display:none;"></div>
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     ADMIN APPLICATION
+════════════════════════════════════════════════ -->
+<div id="admin-app">
+
+  <!-- SIDEBAR -->
+  <aside class="admin-sidebar" id="admin-sidebar">
+    <div class="sidebar-logo-area">
+      <img src="/images/goderox_official_logo.jpeg" alt="GODEROX" class="sidebar-logo" />
+      <div class="sidebar-brand-info">
+        <div class="sidebar-brand-name">GODEROX</div>
+        <div class="sidebar-brand-sub">High Frequency Atelier</div>
+      </div>
+    </div>
+
+    <div class="sidebar-section-label">GESTIÓN</div>
+
+    <nav class="sidebar-nav">
+      <button class="nav-item active" data-module="dashboard" id="nav-dashboard">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </button>
+
+      <button class="nav-item" data-module="products" id="nav-products">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        Productos
+        <span class="nav-badge" id="sidebar-products-count">0</span>
+      </button>
+
+      <button class="nav-item" data-module="brands" id="nav-brands">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+        Marcas
+        <span class="nav-badge" id="sidebar-brands-count">0</span>
+      </button>
+
+      <button class="nav-item" data-module="categories" id="nav-categories">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        Categorías
+      </button>
+
+      <button class="nav-item" data-module="sizeguide" id="nav-sizeguide">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 3H3v18h18V3z"/><path d="M7 3v4M12 3v8M17 3v4"/></svg>
+        Guía de Tallas
+      </button>
+    </nav>
+
+    <div class="sidebar-section-label">FUTURO</div>
+    <nav class="sidebar-nav" style="padding-top:0;">
+      <div class="nav-item" style="opacity:0.35; cursor:not-allowed;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Pedidos
+        <span class="nav-badge" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);">Próx.</span>
+      </div>
+      <div class="nav-item" style="opacity:0.35; cursor:not-allowed;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Clientes
+        <span class="nav-badge" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);">Próx.</span>
+      </div>
+      <div class="nav-item" style="opacity:0.35; cursor:not-allowed;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        Cupones
+        <span class="nav-badge" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);">Próx.</span>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="/" target="_blank" class="nav-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Ver Tienda
+      </a>
+      <button class="nav-item" id="logout-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Cerrar Sesión
+      </button>
+      <div class="sidebar-user-info" id="sidebar-user-email">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <span>admin</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="admin-main">
+
+    <!-- TOP BAR -->
+    <header class="admin-topbar">
+      <div class="topbar-breadcrumb">
+        <span>GODEROX Admin</span>
+        <span class="sep">/</span>
+        <span class="current" id="topbar-current-page">Dashboard</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn btn-primary" id="topbar-primary-action" style="display:none;"></button>
+      </div>
+    </header>
+
+    <!-- DYNAMIC CONTENT AREA -->
+    <div class="admin-content" id="admin-content-area">
+      <!-- Rendered by admin-app.js -->
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <span>Cargando panel...</span>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PRODUCT FORM DRAWER
+════════════════════════════════════════════════ -->
+<div class="admin-modal-backdrop" id="product-drawer-backdrop">
+  <div class="admin-drawer" id="product-drawer">
+    <div class="drawer-header">
+      <div>
+        <div class="drawer-title" id="product-drawer-title">Nuevo Producto</div>
+        <div class="drawer-subtitle">Completa todos los campos marcados con *</div>
+      </div>
+      <button class="btn btn-ghost btn-icon" id="close-product-drawer" title="Cerrar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="drawer-body">
+      <form id="product-form" novalidate>
+        <input type="hidden" id="product-id-field" />
+
+        <!-- IMAGES -->
+        <div class="form-section-label">📸 Imágenes del Producto</div>
+        <div class="form-group">
+          <div class="upload-zone" id="product-upload-zone">
+            <input type="file" id="product-image-input" class="upload-input" accept="image/*" multiple />
+            <div class="upload-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            </div>
+            <div class="upload-title">Arrastra imágenes aquí</div>
+            <div class="upload-sub">o haz clic para seleccionar · JPG, PNG, WEBP · Máx. 5MB por imagen</div>
+          </div>
+          <div class="image-preview-grid" id="product-image-preview"></div>
+        </div>
+
+        <hr class="divider" />
+
+        <!-- BASIC INFO -->
+        <div class="form-section-label">📦 Información del Producto</div>
+
+        <div class="form-group">
+          <label class="form-label" for="p-name">Nombre del Producto <span class="required">*</span></label>
+          <input type="text" id="p-name" class="form-input" placeholder="Ej. ATELIER OVERSIZED TEE NOIR" required />
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="p-brand">Marca <span class="required">*</span></label>
+            <select id="p-brand" class="form-select" required>
+              <option value="">Seleccionar marca...</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="p-section">Sección <span class="required">*</span></label>
+            <select id="p-section" class="form-select" required>
+              <option value="">Seleccionar...</option>
+              <option value="hombre">Hombre</option>
+              <option value="mujer">Mujer</option>
+              <option value="perfumes">Perfumería Luxury</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="p-category">Categoría <span class="required">*</span></label>
+          <select id="p-category" class="form-select" required>
+            <option value="">Primero selecciona una sección...</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="p-description">Descripción</label>
+          <textarea id="p-description" class="form-textarea" placeholder="Describe el producto, materiales, acabados..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="p-gsm">Especificación Textil / GSM</label>
+          <input type="text" id="p-gsm" class="form-input" placeholder="Ej. 320 GSM Heavy Organic Cotton" />
+        </div>
+
+        <hr class="divider" />
+
+        <!-- PRICING -->
+        <div class="form-section-label">💰 Precios</div>
+
+        <div class="form-grid-3">
+          <div class="form-group">
+            <label class="form-label" for="p-price">Precio ($ COP) <span class="required">*</span></label>
+            <input type="number" id="p-price" class="form-input" placeholder="190000" min="0" step="1000" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="p-old-price">Precio Anterior ($ COP)</label>
+            <input type="number" id="p-old-price" class="form-input" placeholder="240000 (opcional)" min="0" step="1000" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="p-stock">Inventario (Unidades)</label>
+            <input type="number" id="p-stock" class="form-input" placeholder="0" min="0" />
+          </div>
+        </div>
+
+        <hr class="divider" />
+
+        <!-- SIZES -->
+        <div class="form-section-label">📏 Tallas Disponibles</div>
+        <div class="form-group">
+          <label class="form-label">Selecciona las tallas</label>
+          <div class="chip-group" id="sizes-chip-group">
+            <div class="chip" data-size="XS">XS</div>
+            <div class="chip" data-size="S">S</div>
+            <div class="chip" data-size="M">M</div>
+            <div class="chip" data-size="L">L</div>
+            <div class="chip" data-size="XL">XL</div>
+            <div class="chip" data-size="XXL">XXL</div>
+            <div class="chip" data-size="28">28</div>
+            <div class="chip" data-size="30">30</div>
+            <div class="chip" data-size="32">32</div>
+            <div class="chip" data-size="34">34</div>
+            <div class="chip" data-size="36">36</div>
+            <div class="chip" data-size="Única Ajustable">Única Ajustable</div>
+          </div>
+        </div>
+
+        <!-- TAGS -->
+        <hr class="divider" />
+        <div class="form-section-label">🏷️ Etiquetas del Producto</div>
+        <div class="form-group">
+          <div class="chip-group" id="tags-chip-group">
+            <div class="chip chip-nuevo" data-tag="Nuevo">✦ Nuevo</div>
+            <div class="chip chip-oferta" data-tag="Oferta">🔥 Oferta</div>
+            <div class="chip chip-masvendido" data-tag="Más vendido">⭐ Más vendido</div>
+            <div class="chip chip-limitada" data-tag="Edición limitada">💎 Edición limitada</div>
+          </div>
+        </div>
+
+        <!-- PROMO SWITCH -->
+        <hr class="divider" />
+        <div class="promo-switch-card">
+          <div class="promo-switch-info">
+            <h4>★ Incluir en Promociones</h4>
+            <p>El producto aparecerá tanto en su categoría como en la sección de Promociones.</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="p-is-promo" />
+            <span class="toggle-track"></span>
+          </label>
+        </div>
+
+        <!-- ACTIVE SWITCH -->
+        <div class="promo-switch-card" style="margin-top: 0.75rem; border-color: var(--border);">
+          <div class="promo-switch-info">
+            <h4>Producto Activo</h4>
+            <p>Si está desactivado, el producto no aparecerá en la tienda.</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="p-is-active" checked />
+            <span class="toggle-track"></span>
+          </label>
+        </div>
+
+        <!-- Hidden selected state -->
+        <input type="hidden" id="p-selected-sizes" />
+        <input type="hidden" id="p-selected-tags" />
+        <input type="hidden" id="p-images-json" />
+
+      </form>
+    </div>
+
+    <div class="drawer-footer">
+      <button class="btn btn-ghost" id="cancel-product-btn">Cancelar</button>
+      <button class="btn btn-primary" id="save-product-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Guardar Producto
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     BRAND FORM DRAWER
+════════════════════════════════════════════════ -->
+<div class="admin-modal-backdrop" id="brand-drawer-backdrop">
+  <div class="admin-drawer" id="brand-drawer">
+    <div class="drawer-header">
+      <div>
+        <div class="drawer-title" id="brand-drawer-title">Nueva Marca</div>
+        <div class="drawer-subtitle">Gestión de marcas aliadas GODEROX</div>
+      </div>
+      <button class="btn btn-ghost btn-icon" id="close-brand-drawer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="drawer-body">
+      <form id="brand-form" novalidate>
+        <input type="hidden" id="brand-id-field" />
+
+        <div class="form-section-label">🏷️ Logotipo de la Marca</div>
+        <div class="form-group">
+          <div class="upload-zone" id="brand-logo-upload-zone">
+            <input type="file" id="brand-logo-input" class="upload-input" accept="image/*" />
+            <div class="upload-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            </div>
+            <div class="upload-title">Arrastra el logotipo aquí</div>
+            <div class="upload-sub">SVG o PNG con fondo transparente · Alta calidad</div>
+          </div>
+          <div id="brand-logo-preview" style="margin-top:0.75rem; display:none; text-align:center;">
+            <img id="brand-logo-preview-img" src="" alt="Logo preview" style="max-height:90px; object-fit:contain; border:1px solid var(--border); border-radius:8px; padding:0.5rem; background:rgba(255,255,255,0.05);" />
+          </div>
+          <div style="margin-top:0.75rem;">
+            <label class="form-label" for="brand-logo-url" style="font-size:0.8rem; color:var(--text-muted);">o pega la URL directa de la imagen:</label>
+            <input type="text" id="brand-logo-url" class="form-input" placeholder="https://ejemplo.com/logo.png" />
+          </div>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="form-section-label">ℹ️ Información</div>
+
+        <div class="form-group">
+          <label class="form-label" for="b-name">Nombre de la Marca <span class="required">*</span></label>
+          <input type="text" id="b-name" class="form-input" placeholder="Ej. Clemont" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="b-subtext">Texto Secundario / Subtítulo</label>
+          <input type="text" id="b-subtext" class="form-input" placeholder="Ej. Moda Urbana & Heavywear" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="b-description">Descripción Destacada de la Marca</label>
+          <textarea id="b-description" class="form-textarea" placeholder="Escribe una descripción atractiva sobre el estilo, historia o filosofía de esta marca..."></textarea>
+          <div class="form-hint">Esta descripción aparecerá destacada en la tarjeta de la marca en la tienda principal.</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="b-order">Orden de Aparición</label>
+          <input type="number" id="b-order" class="form-input" placeholder="1, 2, 3..." min="1" />
+          <div class="form-hint">Número más bajo = aparece primero en la tienda.</div>
+        </div>
+
+        <div class="promo-switch-card" style="border-color: var(--border);">
+          <div class="promo-switch-info">
+            <h4>Marca Activa</h4>
+            <p>Si está desactivada, no aparecerá en la sección de marcas.</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="b-is-active" checked />
+            <span class="toggle-track"></span>
+          </label>
+        </div>
+      </form>
+    </div>
+
+    <div class="drawer-footer">
+      <button class="btn btn-ghost" id="cancel-brand-btn">Cancelar</button>
+      <button class="btn btn-primary" id="save-brand-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Guardar Marca
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     CATEGORY FORM DRAWER
+════════════════════════════════════════════════ -->
+<div class="admin-modal-backdrop" id="category-drawer-backdrop">
+  <div class="admin-drawer" id="category-drawer">
+    <div class="drawer-header">
+      <div>
+        <div class="drawer-title" id="category-drawer-title">Nueva Categoría</div>
+        <div class="drawer-subtitle">Gestión de categorías del catálogo GODEROX</div>
+      </div>
+      <button class="btn btn-ghost btn-icon" id="close-category-drawer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="drawer-body">
+      <form id="category-form" novalidate>
+        <input type="hidden" id="category-id-field" />
+
+        <div class="form-group">
+          <label class="form-label" for="c-name">Nombre de la Categoría <span class="required">*</span></label>
+          <input type="text" id="c-name" class="form-input" placeholder="Ej. Camisetas" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="c-slug">Identificador (Slug) <span class="required">*</span></label>
+          <input type="text" id="c-slug" class="form-input" placeholder="Ej. camisetas (sin espacios, en minúsculas)" required />
+          <div class="form-hint">Este identificador se usa internamente. No uses espacios ni tildes.</div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="c-section">Sección <span class="required">*</span></label>
+            <select id="c-section" class="form-select" required>
+              <option value="">Seleccionar...</option>
+              <option value="hombre">Hombre</option>
+              <option value="mujer">Mujer</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="c-order">Orden de Visualización</label>
+            <input type="number" id="c-order" class="form-input" placeholder="1, 2, 3..." min="1" />
+          </div>
+        </div>
+
+        <div class="promo-switch-card" style="border-color: var(--border);">
+          <div class="promo-switch-info">
+            <h4>Categoría Activa</h4>
+            <p>Si está desactivada, no aparecerá en los filtros de la tienda.</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="c-is-active" checked />
+            <span class="toggle-track"></span>
+          </label>
+        </div>
+      </form>
+    </div>
+
+    <div class="drawer-footer">
+      <button class="btn btn-ghost" id="cancel-category-btn">Cancelar</button>
+      <button class="btn btn-primary" id="save-category-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Guardar Categoría
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     TOAST CONTAINER
+════════════════════════════════════════════════ -->
+<div class="toast-container" id="toast-container"></div>
+
+<!-- ═══════════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════════════ -->
+<script type="module" src="/src/js/admin/admin-app.js"></script>
+
+</body>
+</html>
