@@ -678,13 +678,14 @@ html, body {
 
 /* ─── TOP ANNOUNCEMENT BAR ─── */
 .top-announcement-bar {
-  background: #111111;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 0.5rem 1rem;
+  background: #080808;
+  border-bottom: 1px solid rgba(200, 165, 91, 0.15);
+  padding: 0.55rem 1rem;
   overflow: hidden;
   white-space: nowrap;
-  position: relative;
-  z-index: 1001;
+  position: sticky;
+  top: 0;
+  z-index: 1002;
 }
 
 .announcement-content {
@@ -707,16 +708,16 @@ html, body {
 /* ─── MAIN HEADER (ULTRA LUXURY EDITORIAL) ─── */
 .header-wrapper {
   position: sticky;
-  top: 0;
+  top: 37px;
   left: 0;
   right: 0;
-  z-index: 1000;
-  background: rgba(8, 8, 8, 0.94);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid rgba(200, 165, 91, 0.22);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.75);
-  height: 76px;
+  z-index: 1001;
+  background: rgba(5, 5, 5, 0.96);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border-bottom: 1px solid rgba(200, 165, 91, 0.18);
+  box-shadow: 0 1px 0 rgba(200, 165, 91, 0.08), 0 8px 40px rgba(0, 0, 0, 0.85);
+  height: 72px;
   transition: var(--transition-smooth);
 }
 
@@ -730,31 +731,61 @@ html, body {
   justify-content: space-between;
 }
 
-/* CLEAN & PROMINENT HEADER BRAND LOGO */
+/* TYPOGRAPHIC WORDMARK LOGO — ULTRA LUXURY */
 .header-logo-link {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
   height: 100%;
+  gap: 0;
 }
 
+.header-wordmark {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  line-height: 1;
+}
+
+.header-wordmark-main {
+  font-family: var(--font-logo);
+  font-size: 1.55rem;
+  font-weight: 900;
+  letter-spacing: 0.28em;
+  background: linear-gradient(135deg, #C8A55B 0%, #E8D5A3 45%, #C8A55B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-transform: uppercase;
+  line-height: 1;
+  transition: all 0.3s ease;
+  text-shadow: none;
+  filter: drop-shadow(0 0 12px rgba(200, 165, 91, 0.3));
+}
+
+.header-wordmark-sub {
+  font-family: var(--font-sans);
+  font-size: 0.52rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  color: rgba(200, 165, 91, 0.55);
+  text-transform: uppercase;
+  line-height: 1;
+  padding-left: 2px;
+}
+
+.header-logo-link:hover .header-wordmark-main {
+  filter: drop-shadow(0 0 20px rgba(200, 165, 91, 0.6));
+}
+
+.header-logo-link:hover .header-wordmark-sub {
+  color: rgba(200, 165, 91, 0.8);
+}
+
+/* Legacy img — hide it if still present */
 .header-brand-logo-img {
-  height: 52px;
-  width: auto;
-  object-fit: contain;
-  border: none;
-  border-radius: 8px;
-  background: transparent;
-  box-shadow: none;
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6));
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-
-
-.header-logo-link:hover .header-brand-logo-img {
-  transform: scale(1.06);
-  filter: drop-shadow(0 0 18px rgba(200, 165, 91, 0.65));
+  display: none;
 }
 
 /* NAV LINKS — EDITORIAL LUXURY */
@@ -963,6 +994,36 @@ html, body {
   background: transparent;
   filter: drop-shadow(0 0 12px rgba(200, 165, 91, 0.3));
 }
+
+.mobile-nav-wordmark {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mobile-nav-wordmark-main {
+  font-family: var(--font-logo);
+  font-size: 1.3rem;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  background: linear-gradient(135deg, #C8A55B 0%, #E8D5A3 45%, #C8A55B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.mobile-nav-wordmark-sub {
+  font-family: var(--font-sans);
+  font-size: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: rgba(200, 165, 91, 0.5);
+  text-transform: uppercase;
+  line-height: 1;
+  padding-left: 2px;
+}
+
 
 .mobile-nav-close {
   background: rgba(255, 255, 255, 0.04);
@@ -3638,21 +3699,22 @@ html, body {
   }
 
   .header-wrapper {
-    height: 64px !important;
+    height: 60px !important;
+    top: 32px !important;
   }
 
   .header-container {
     padding: 0 1rem !important;
   }
 
-  /* Natural, crisp logo in mobile header */
-  .header-brand-logo-img {
-    height: 40px !important;
-    width: auto !important;
-    border: none !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    border-radius: 6px !important;
+  .header-wordmark-main {
+    font-size: 1.25rem !important;
+    letter-spacing: 0.2em !important;
+  }
+
+  .header-wordmark-sub {
+    font-size: 0.45rem !important;
+    letter-spacing: 0.28em !important;
   }
 
   .main-nav {
