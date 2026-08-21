@@ -889,6 +889,146 @@ html, body {
   display: none;
 }
 
+/* ─── MOBILE NAV DRAWER ─── */
+.mobile-nav-drawer {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.mobile-nav-drawer.active {
+  display: block;
+  pointer-events: auto;
+}
+
+.mobile-nav-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: fadeInBackdrop 0.3s ease;
+}
+
+@keyframes fadeInBackdrop {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.mobile-nav-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(320px, 85vw);
+  height: 100%;
+  background: #0a0a0a;
+  border-left: 1px solid rgba(200, 165, 91, 0.2);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow-y: auto;
+  animation: slideInPanel 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: -8px 0 40px rgba(0, 0, 0, 0.6);
+}
+
+@keyframes slideInPanel {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+.mobile-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid rgba(200, 165, 91, 0.12);
+  background: #080808;
+}
+
+.mobile-nav-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  background: transparent;
+  border-radius: 4px;
+}
+
+.mobile-nav-close {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  padding: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.mobile-nav-close:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 0;
+  flex: 1;
+}
+
+.mobile-nav-link {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  padding: 1rem 1.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all 0.2s ease;
+  display: block;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:active {
+  color: var(--gold-primary);
+  background: rgba(200, 165, 91, 0.05);
+  padding-left: 2.25rem;
+}
+
+.mobile-nav-link.gold-shimmer-link {
+  color: var(--gold-primary);
+}
+
+.mobile-nav-whatsapp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  margin: 1.5rem;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.mobile-nav-whatsapp:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
 /* ─── HERO EDITORIAL (INSP. IMPERIAL CLOTHES) ─── */
 .hero-section {
   position: relative;
@@ -911,6 +1051,7 @@ html, body {
   background: #080808;
   position: relative;
   overflow: hidden;
+  isolation: isolate;
 }
 
 /* ALTERNATING DANCING SPOTLIGHTS (GPU OPTIMIZED 60FPS) */

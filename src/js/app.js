@@ -643,18 +643,34 @@ function initHeader() {
   const mobileToggle = document.getElementById('mobile-menu-toggle');
   const mobileNav = document.getElementById('mobile-nav-drawer');
   const mobileClose = document.getElementById('mobile-nav-close');
+  const mobileBackdrop = document.getElementById('mobile-nav-backdrop');
+
+  function openMobileNav() {
+    if (!mobileNav) return;
+    mobileNav.classList.add('active');
+    mobileNav.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileNav() {
+    if (!mobileNav) return;
+    mobileNav.classList.remove('active');
+    mobileNav.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
 
   if (mobileToggle && mobileNav) {
     mobileToggle.onclick = () => {
       audio.playTick(500);
-      mobileNav.classList.add('active');
+      openMobileNav();
     };
-    if (mobileClose) {
-      mobileClose.onclick = () => {
-        audio.playWhoosh();
-        mobileNav.classList.remove('active');
-      };
-    }
+    if (mobileClose) mobileClose.onclick = () => { audio.playWhoosh(); closeMobileNav(); };
+    if (mobileBackdrop) mobileBackdrop.onclick = () => closeMobileNav();
+
+    // Close drawer when any nav link is clicked
+    mobileNav.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => closeMobileNav());
+    });
   }
 }
 
