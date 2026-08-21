@@ -2338,20 +2338,24 @@ html, body {
   gap: 1rem;
 }
 
-.admin-link-btn {
-  color: var(--gold-light);
-  text-decoration: none;
-  font-weight: 600;
-  padding: 0.4rem 0.8rem;
-  border: 1px solid var(--border-gold);
-  border-radius: 4px;
-  transition: var(--transition-smooth);
+.designer-credits {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
 }
 
-.admin-link-btn:hover {
-  background: var(--gold-primary);
-  color: #000000;
+.designer-name {
+  color: var(--gold-light);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  background: linear-gradient(135deg, #C8A55B 0%, #E8D5A3 50%, #C8A55B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
+
 
 /* ─── RESPONSIVE BREAKPOINTS ─── */
 @media (max-width: 992px) {
