@@ -631,13 +631,40 @@ function initScrollReveal() {
 /* HEADER & SCROLL BEHAVIOR */
 function initHeader() {
   const header = document.getElementById('main-header');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
+  const announcementBar = document.querySelector('.top-announcement-bar');
+  const BAR_H = announcementBar ? announcementBar.offsetHeight : 37;
+
+  let lastScrollY = 0;
+  let ticking = false;
+
+  function updateHeader() {
+    const scrollY = window.scrollY;
+
+    if (scrollY > BAR_H) {
+      // Bar hidden: move header to top
+      if (announcementBar) announcementBar.style.transform = `translateY(-100%)`;
+      header.style.top = '0px';
       header.classList.add('scrolled');
     } else {
+      // Bar visible: restore positions
+      if (announcementBar) announcementBar.style.transform = 'translateY(0)';
+      header.style.top = BAR_H + 'px';
       header.classList.remove('scrolled');
     }
-  });
+
+    lastScrollY = scrollY;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(updateHeader);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // Run once on load
+  updateHeader();
 
   // Mobile menu toggle
   const mobileToggle = document.getElementById('mobile-menu-toggle');
