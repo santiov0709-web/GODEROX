@@ -267,21 +267,23 @@ function initHeroParallax() {
 }
 
 // ─────────────────────────────────────────────────────────────
-//  6. VELOCITY MARQUEE  (GSAP-powered brand ticker with drag)
+//  6. VELOCITY MARQUEE  (GSAP-powered brand ticker)
 // ─────────────────────────────────────────────────────────────
 function initVelocityMarquee() {
   const tickerWrap = document.querySelector('.brand-ticker-wrap');
   const ticker     = document.querySelector('.brand-ticker');
   if (!tickerWrap || !ticker) return;
 
-  // Duplicate content for seamless loop
-  ticker.innerHTML += ticker.innerHTML;
+  // Duplicate content only once for seamless loop
+  if (!ticker.hasAttribute('data-duplicated')) {
+    ticker.setAttribute('data-duplicated', '1');
+    ticker.innerHTML += ticker.innerHTML;
+  }
 
   const tickerWidth = ticker.scrollWidth / 2;
-  let speed = -0.5; // px per frame (negative = left direction)
+  let speed = -0.5;
   let xPos = 0;
 
-  // Scroll velocity boost
   let lastScrollY = window.scrollY;
   let velocityBoost = 0;
 
@@ -292,7 +294,7 @@ function initVelocityMarquee() {
   });
 
   gsap.ticker.add(() => {
-    velocityBoost *= 0.93; // friction decay
+    velocityBoost *= 0.93;
     xPos += speed + velocityBoost;
 
     if (Math.abs(xPos) >= tickerWidth) xPos = 0;
@@ -310,41 +312,36 @@ function initSectionHeaders() {
     const title    = header.querySelector('.section-title');
     const subtitle = header.querySelector('.section-subtitle');
 
-    // Wrap title in overflow clip
-    if (title && !title.closest('[data-reveal]')) {
-      title.style.overflow = 'hidden';
-      title.style.display  = 'block';
-    }
-
     const tl = gsap.timeline({
-      scrollTrigger: { trigger: header, start: 'top 82%', once: true },
+      scrollTrigger: { trigger: header, start: 'top 85%', once: true },
     });
 
     if (tag) {
       tl.fromTo(tag,
-        { x: -40, opacity: 0 },
-        { x: 0,   opacity: 1, duration: 0.8, ease: 'power3.out' },
+        { x: -30, opacity: 0 },
+        { x: 0,   opacity: 1, duration: 0.7, ease: 'power3.out', clearProps: 'all' },
         0
       );
     }
 
     if (title) {
       tl.fromTo(title,
-        { y: '110%', opacity: 0 },
-        { y: '0%',   opacity: 1, duration: 1.1, ease: 'expo.out' },
-        0.15
+        { y: 30, opacity: 0 },
+        { y: 0,  opacity: 1, duration: 0.8, ease: 'expo.out', clearProps: 'all' },
+        0.1
       );
     }
 
     if (subtitle) {
       tl.fromTo(subtitle,
-        { y: 28, opacity: 0, filter: 'blur(6px)' },
-        { y: 0,  opacity: 1, filter: 'blur(0px)', duration: 0.9, ease: 'power3.out' },
-        0.4
+        { y: 20, opacity: 0 },
+        { y: 0,  opacity: 1, duration: 0.7, ease: 'power3.out', clearProps: 'all' },
+        0.25
       );
     }
   });
 }
+
 
 // ─────────────────────────────────────────────────────────────
 //  8. STAGGERED PRODUCT CARDS  (ultra-smooth scale + translate)

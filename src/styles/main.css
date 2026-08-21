@@ -3540,6 +3540,10 @@ html, body {
   /* ── Brand Ticker ── */
   .brand-ticker-wrap {
     padding: 0.65rem 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    overflow: hidden !important;
+    contain: paint !important;
   }
 
   .brand-ticker {
@@ -3549,22 +3553,51 @@ html, body {
   }
 
   /* ── Sections general ── */
+  .catalog-section,
+  .catalog-container {
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+
   .section-header {
     margin-bottom: 1.8rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 0 0.5rem !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
   }
 
   .section-tag {
     font-size: 0.68rem !important;
     letter-spacing: 0.18em !important;
+    text-align: center !important;
+    display: block !important;
+    width: 100% !important;
   }
 
   .section-title {
     font-size: 1.75rem !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    word-break: break-word !important;
   }
 
   .section-subtitle {
     font-size: 0.85rem !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
+
 
   .brands-section,
   .catalog-section {
