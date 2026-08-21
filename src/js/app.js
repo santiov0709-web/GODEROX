@@ -13,6 +13,16 @@ import { initGSAPAnimations } from './gsap-animations.js';
 
 import { INITIAL_PRODUCTS } from './data.js';
 
+// ── FORCE ALWAYS SCROLL TO TOP ON PAGE RELOAD / REFRESH ──
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+window.addEventListener('beforeunload', () => {
+  window.scrollTo(0, 0);
+});
+
+
 let activeSection = 'all';
 let activeSubcategory = 'all';
 let PRODUCTS = [];
@@ -497,6 +507,7 @@ function initPreloader() {
   const percentEl = document.getElementById('preloader-percent');
   const statusEl = document.getElementById('preloader-status');
 
+  window.scrollTo(0, 0);
   if (!preloader) return;
 
   document.body.style.overflow = 'hidden';
@@ -527,11 +538,13 @@ function initPreloader() {
       if (statusEl) statusEl.textContent = 'BIENVENIDO A GODEROX';
 
       setTimeout(() => {
+        window.scrollTo(0, 0);
         preloader.classList.add('fade-out');
         document.body.style.overflow = '';
         window.__goderoxReady = true;
         // Signal to GSAP animations that preloader is done
         document.dispatchEvent(new CustomEvent('goderox:ready'));
+
         // Show VIP popup after preloader fades (only once per day)
         setTimeout(() => initWelcomePopup(), 800);
       }, 500);
