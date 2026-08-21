@@ -1,6 +1,65 @@
 @import './variables.css';
 @import './animations.css';
 
+/* ─────────────────────────────────────────────────────
+   CUSTOM CURSOR GODEROX (Desktop only)
+───────────────────────────────────────────────────── */
+@media (hover: hover) and (pointer: fine) {
+  * { cursor: none !important; }
+}
+
+.gdr-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(200, 165, 91, 0.7);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999999;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  mix-blend-mode: difference;
+}
+
+.gdr-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  background: #C8A55B;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999999;
+  transform: translate(-50%, -50%);
+  transition: width 0.1s ease, height 0.1s ease;
+}
+
+/* Hover state */
+.gdr-cursor.is-hovering {
+  width: 64px;
+  height: 64px;
+  background: rgba(200, 165, 91, 0.08);
+  border-color: rgba(200, 165, 91, 1);
+}
+
+/* Hidden state (mouse left viewport) */
+.gdr-cursor.is-hidden,
+.gdr-cursor-dot.is-hidden {
+  opacity: 0;
+}
+
+/* Hide custom cursor on mobile/touch */
+@media (hover: none) {
+  .gdr-cursor,
+  .gdr-cursor-dot {
+    display: none !important;
+  }
+}
+
+
 /* ─── STANDARDIZED MODAL TOKENS ─── */
 .goderox-glass-overlay {
   position: fixed;

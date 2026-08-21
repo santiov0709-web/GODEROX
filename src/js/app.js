@@ -9,6 +9,7 @@ import { wishlist } from './wishlist.js';
 import { setupQuickView } from './quickview.js';
 import { setupLookbook } from './lookbook.js';
 import { setupVipGate } from './vip-gate.js';
+import { initGSAPAnimations } from './gsap-animations.js';
 
 import { INITIAL_PRODUCTS } from './data.js';
 
@@ -165,6 +166,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   setupQuickView();
   setupLookbook();
   setupVipGate();
+  initGSAPAnimations();
 
   window.addEventListener('storage', (e) => {
     if (e.key === 'goderox_products_db') refreshProductList();
