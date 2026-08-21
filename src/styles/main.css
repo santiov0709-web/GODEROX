@@ -8,6 +8,9 @@ html, body {
   width: 100% !important;
   touch-action: manipulation;
   -webkit-text-size-adjust: 100%;
+  /* Space for fixed announcement bar (37px) + fixed header (72px) */
+  padding-top: 109px;
+  box-sizing: border-box;
 }
 
 /* ─────────────────────────────────────────────────────
@@ -683,8 +686,11 @@ html, body {
   padding: 0.55rem 1rem;
   overflow: hidden;
   white-space: nowrap;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   z-index: 1002;
 }
 
@@ -707,10 +713,11 @@ html, body {
 
 /* ─── MAIN HEADER (ULTRA LUXURY EDITORIAL) ─── */
 .header-wrapper {
-  position: sticky;
+  position: fixed;
   top: 37px;
   left: 0;
   right: 0;
+  width: 100%;
   z-index: 1001;
   background: rgba(5, 5, 5, 0.96);
   backdrop-filter: blur(24px) saturate(200%);
@@ -3688,10 +3695,15 @@ html, body {
 ───────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   /* ── Header & Top Bar ── */
+  html, body {
+    padding-top: 92px !important;
+  }
+
   .top-announcement-bar {
     padding: 0.4rem 0.5rem !important;
     font-size: 0.62rem !important;
   }
+
 
   .announcement-content {
     gap: 0.5rem !important;
