@@ -469,15 +469,16 @@ function runAll() {
 }
 
 export function initGSAPAnimations() {
-  // Init Lenis first — always
+  // Init Lenis smooth scroll first — always
   initLenis();
 
   const preloader = document.getElementById('preloader');
-  const PRELOADER_DURATION = 800; // ms — fires shortly after preloader fades
 
   if (preloader) {
-    setTimeout(runAll, PRELOADER_DURATION);
+    // Listen for the exact moment the preloader starts fading out
+    document.addEventListener('goderox:ready', runAll, { once: true });
   } else {
+    // No preloader — fire immediately
     runAll();
   }
 }

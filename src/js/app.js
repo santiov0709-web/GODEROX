@@ -529,6 +529,8 @@ function initPreloader() {
       setTimeout(() => {
         preloader.classList.add('fade-out');
         document.body.style.overflow = '';
+        // Signal to GSAP animations that preloader is done
+        document.dispatchEvent(new CustomEvent('goderox:ready'));
         // Show VIP popup after preloader fades (only once per day)
         setTimeout(() => initWelcomePopup(), 800);
       }, 500);
