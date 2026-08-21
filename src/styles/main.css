@@ -10,23 +10,24 @@
 
 .gdr-cursor {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 36px;
-  height: 36px;
-  border: 1.5px solid rgba(200, 165, 91, 0.7);
+  top: 0; left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(200, 165, 91, 0.65);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999999;
   transform: translate(-50%, -50%);
-  transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, background 0.25s ease;
-  mix-blend-mode: difference;
+  transition: width 0.3s cubic-bezier(0.16,1,0.3,1),
+              height 0.3s cubic-bezier(0.16,1,0.3,1),
+              border-color 0.3s ease,
+              background 0.3s ease;
+  will-change: transform;
 }
 
 .gdr-cursor-dot {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 5px;
   height: 5px;
   background: #C8A55B;
@@ -34,30 +35,63 @@
   pointer-events: none;
   z-index: 9999999;
   transform: translate(-50%, -50%);
-  transition: width 0.1s ease, height 0.1s ease;
+  will-change: transform;
 }
 
-/* Hover state */
+/* Floating label on cursor */
+.gdr-cursor-label {
+  position: fixed;
+  top: 0; left: 0;
+  transform: translate(-50%, -50%);
+  font-family: 'Cinzel', serif;
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  color: #C8A55B;
+  pointer-events: none;
+  z-index: 9999999;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+  text-align: center;
+  margin-top: 24px;
+}
+
+/* Hover state — cursor expands and glows */
 .gdr-cursor.is-hovering {
-  width: 64px;
-  height: 64px;
-  background: rgba(200, 165, 91, 0.08);
-  border-color: rgba(200, 165, 91, 1);
+  width: 70px;
+  height: 70px;
+  background: rgba(200, 165, 91, 0.06);
+  border-color: rgba(200, 165, 91, 0.9);
 }
 
-/* Hidden state (mouse left viewport) */
+/* Hidden state */
 .gdr-cursor.is-hidden,
 .gdr-cursor-dot.is-hidden {
   opacity: 0;
+  transition: opacity 0.2s ease;
 }
 
-/* Hide custom cursor on mobile/touch */
+/* Mobile: no custom cursor */
 @media (hover: none) {
-  .gdr-cursor,
-  .gdr-cursor-dot {
+  .gdr-cursor, .gdr-cursor-dot, .gdr-cursor-label {
     display: none !important;
   }
 }
+
+/* ─── LINE REVEAL (GSAP clip-path text) ─── */
+.reveal-line-wrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+.reveal-line-inner {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* ─── BRAND TICKER (GSAP velocity marquee) ─── */
+.brand-ticker-wrap { overflow: hidden; white-space: nowrap; }
+.brand-ticker { display: inline-flex; align-items: center; gap: 2rem; white-space: nowrap; will-change: transform; }
 
 
 /* ─── STANDARDIZED MODAL TOKENS ─── */
