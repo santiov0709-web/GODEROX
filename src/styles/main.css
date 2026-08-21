@@ -7,8 +7,20 @@ html, body {
   max-width: 100vw !important;
   width: 100% !important;
   touch-action: manipulation;
-  -webkit-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100% !important;
+  text-size-adjust: 100% !important;
+  -ms-text-size-adjust: 100% !important;
 }
+
+/* Prevent iOS Safari auto-zoom on form element focus */
+@media screen and (max-width: 768px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
 
 /* ─────────────────────────────────────────────────────
    CUSTOM CURSOR GODEROX (Desktop only)

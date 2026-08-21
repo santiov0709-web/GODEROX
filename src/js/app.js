@@ -13,14 +13,29 @@ import { initGSAPAnimations } from './gsap-animations.js';
 
 import { INITIAL_PRODUCTS } from './data.js';
 
-// ── FORCE ALWAYS SCROLL TO TOP ON PAGE RELOAD / REFRESH ──
-if ('scrollRestoration' in history) {
-  history.scrollRestoration = 'manual';
+// ── ABSOLUTE FORCE SCROLL TO TOP FOR MOBILE & DESKTOP ──
+export function resetScrollToTop() {
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
 }
-window.scrollTo(0, 0);
-window.addEventListener('beforeunload', () => {
-  window.scrollTo(0, 0);
+
+resetScrollToTop();
+
+['DOMContentLoaded', 'load', 'pageshow', 'orientationchange'].forEach(evt => {
+  window.addEventListener(evt, () => {
+    resetScrollToTop();
+    setTimeout(resetScrollToTop, 50);
+    setTimeout(resetScrollToTop, 250);
+    setTimeout(resetScrollToTop, 600);
+  }, { passive: true });
 });
+
+window.addEventListener('beforeunload', resetScrollToTop);
+
 
 
 let activeSection = 'all';
@@ -538,12 +553,16 @@ function initPreloader() {
       if (statusEl) statusEl.textContent = 'BIENVENIDO A GODEROX';
 
       setTimeout(() => {
-        window.scrollTo(0, 0);
+        resetScrollToTop();
         preloader.classList.add('fade-out');
         document.body.style.overflow = '';
+        resetScrollToTop();
+        setTimeout(resetScrollToTop, 100);
+        setTimeout(resetScrollToTop, 350);
         window.__goderoxReady = true;
         // Signal to GSAP animations that preloader is done
         document.dispatchEvent(new CustomEvent('goderox:ready'));
+
 
         // Show VIP popup after preloader fades (only once per day)
         setTimeout(() => initWelcomePopup(), 800);
