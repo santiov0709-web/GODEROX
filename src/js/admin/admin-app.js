@@ -246,15 +246,37 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
-  // Logout
-  document.getElementById('logout-btn')?.addEventListener('click', async () => {
-    await supabase.auth.signOut();
-    showLogin();
-  });
+  // Mobile Sidebar Toggle
+  const sidebar = document.getElementById('admin-sidebar');
+  const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+  const mobileToggle = document.getElementById('mobile-sidebar-toggle');
+
+  function openMobileSidebar() {
+    sidebar?.classList.add('mobile-open');
+    sidebarBackdrop?.classList.add('active');
+  }
+
+  function closeMobileSidebar() {
+    sidebar?.classList.remove('mobile-open');
+    sidebarBackdrop?.classList.remove('active');
+  }
+
+  mobileToggle?.addEventListener('click', openMobileSidebar);
+  sidebarBackdrop?.addEventListener('click', closeMobileSidebar);
 
   // Sidebar navigation
   document.querySelectorAll('.nav-item[data-module]').forEach(btn => {
-    btn.addEventListener('click', () => navigateTo(btn.dataset.module));
+    btn.addEventListener('click', () => {
+      navigateTo(btn.dataset.module);
+      closeMobileSidebar();
+    });
+  });
+
+  // Logout
+  document.getElementById('logout-btn')?.addEventListener('click', async () => {
+    closeMobileSidebar();
+    await supabase.auth.signOut();
+    showLogin();
   });
 
   // Auth state change
@@ -263,6 +285,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (event === 'SIGNED_IN' && session) showApp(session.user);
   });
 });
+
 
 // Expose globally
 window.navigateTo = navigateTo;
