@@ -8,9 +8,6 @@ html, body {
   width: 100% !important;
   touch-action: manipulation;
   -webkit-text-size-adjust: 100%;
-  /* Space for fixed announcement bar (37px) + fixed header (72px) */
-  padding-top: 109px;
-  box-sizing: border-box;
 }
 
 /* ─────────────────────────────────────────────────────
@@ -3729,10 +3726,6 @@ html, body {
 ───────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   /* ── Header & Top Bar ── */
-  html, body {
-    padding-top: 92px !important;
-  }
-
   .top-announcement-bar {
     padding: 0.4rem 0.5rem !important;
     font-size: 0.62rem !important;
