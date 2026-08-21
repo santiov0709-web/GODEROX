@@ -3398,134 +3398,304 @@
    MOBILE RESPONSIVENESS & GRAPHIC FIXES (iOS & Android)
 ───────────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  /* Preloader fixes */
-  .pl-corner {
-    width: 36px !important;
-    height: 36px !important;
-  }
-  .pl-corner-tl { top: 12px !important; left: 12px !important; }
-  .pl-corner-tr { top: 12px !important; right: 12px !important; }
-  .pl-corner-bl { bottom: 12px !important; left: 12px !important; }
-  .pl-corner-br { bottom: 12px !important; right: 12px !important; }
-  .preloader-title {
-    font-size: 2.2rem !important;
-    letter-spacing: 0.2em !important;
+  /* ── Header & Top Bar ── */
+  .top-announcement-bar {
+    padding: 0.4rem 0.5rem !important;
+    font-size: 0.62rem !important;
   }
 
-  /* Header & Navigation */
-  .header-wrapper {
-    height: 72px !important;
-  }
-  .header-container {
-    padding: 0 1.25rem !important;
-  }
-  .header-brand-logo-img {
-    height: 48px !important;
-  }
-
-  /* Hero Section Mobile */
-  .hero-fullscreen-logo-section {
-    min-height: auto !important;
-    padding-top: 2rem !important;
-    padding-bottom: 3rem !important;
-  }
-  .hero-center-content {
-    min-height: auto !important;
-    padding: 3rem 1.25rem 2rem !important;
-    gap: 2.2rem !important;
-  }
-  .hero-logo-fullscreen-wrap {
-    width: clamp(240px, 75vw, 420px) !important;
-    height: clamp(240px, 75vw, 420px) !important;
-  }
-  .hero-luxury-text-block {
-    gap: 0.8rem !important;
-  }
-  .hero-label-top {
-    font-size: 0.82rem !important;
-    letter-spacing: 0.35em !important;
-  }
-  .hero-label-bottom {
-    font-size: clamp(1.8rem, 8vw, 3rem) !important;
+  .announcement-content {
+    gap: 0.5rem !important;
     letter-spacing: 0.08em !important;
   }
+
+  .header-wrapper {
+    height: 64px !important;
+  }
+
+  .header-container {
+    padding: 0 1rem !important;
+  }
+
+  .header-brand-logo-img {
+    height: 42px !important;
+  }
+
+  .main-nav {
+    display: none !important;
+  }
+
+  .whatsapp-header-btn {
+    display: none !important;
+  }
+
+  .cart-open-btn .action-lbl {
+    display: none !important;
+  }
+
+  .cart-open-btn {
+    padding: 0 0.6rem !important;
+    height: 38px !important;
+    gap: 0.35rem !important;
+  }
+
+  .icon-btn {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 6px !important;
+  }
+
+  .header-actions {
+    gap: 0.4rem !important;
+  }
+
+  .mobile-menu-toggle {
+    display: inline-flex !important;
+  }
+
+  /* ── Preloader ── */
+  .pl-corner {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  .pl-corner-tl { top: 10px !important; left: 10px !important; }
+  .pl-corner-tr { top: 10px !important; right: 10px !important; }
+  .pl-corner-bl { bottom: 10px !important; left: 10px !important; }
+  .pl-corner-br { bottom: 10px !important; right: 10px !important; }
+  .preloader-title {
+    font-size: 2rem !important;
+    letter-spacing: 0.18em !important;
+  }
+
+  /* ── Hero Section Mobile ── */
+  .hero-fullscreen-logo-section {
+    min-height: calc(100vh - 64px) !important;
+    padding: 0 !important;
+  }
+
+  .hero-center-content {
+    min-height: auto !important;
+    padding: 3.5rem 1rem 2.5rem !important;
+    gap: 2rem !important;
+  }
+
+  .hero-logo-fullscreen-wrap {
+    width: min(300px, 76vw) !important;
+    height: min(300px, 76vw) !important;
+  }
+
+  .hero-luxury-text-block {
+    gap: 0.75rem !important;
+  }
+
+  .hero-label-top {
+    font-size: 0.78rem !important;
+    letter-spacing: 0.35em !important;
+  }
+
+  .hero-label-bottom {
+    font-size: clamp(1.8rem, 8.5vw, 2.8rem) !important;
+    letter-spacing: 0.08em !important;
+    line-height: 1.15 !important;
+  }
+
   .hero-ornament-top,
   .hero-ornament-bottom {
-    width: 90vw !important;
-    gap: 0.6rem !important;
+    width: 88vw !important;
+    gap: 0.5rem !important;
   }
+
   .hero-location-tag {
-    font-size: 0.58rem !important;
-    letter-spacing: 0.12em !important;
+    font-size: 0.55rem !important;
+    letter-spacing: 0.1em !important;
     white-space: normal !important;
     text-align: center !important;
   }
+
   .hero-exclusive-btn {
-    padding: 0.95rem 1.8rem !important;
-    font-size: 0.8rem !important;
+    padding: 0.9rem 1.6rem !important;
+    font-size: 0.78rem !important;
     letter-spacing: 0.12em !important;
     width: 100% !important;
-    max-width: 320px !important;
+    max-width: 300px !important;
     justify-content: center !important;
   }
 
-  /* VIP Club Popup Mobile */
-  .gdr-popup-card {
-    padding: 2.2rem 1.25rem 1.5rem !important;
-    max-width: 92vw !important;
-    max-height: 88vh !important;
-    overflow-y: auto !important;
-  }
-  .gdr-popup-title {
-    font-size: 1.4rem !important;
+  /* ── Brand Ticker ── */
+  .brand-ticker-wrap {
+    padding: 0.65rem 0 !important;
   }
 
-  /* Category Filter Pills (Horizontal Scroll) */
+  .brand-ticker {
+    font-size: 0.72rem !important;
+    gap: 1.5rem !important;
+    letter-spacing: 0.18em !important;
+  }
+
+  /* ── Sections general ── */
+  .section-header {
+    margin-bottom: 1.8rem !important;
+  }
+
+  .section-tag {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.18em !important;
+  }
+
+  .section-title {
+    font-size: 1.75rem !important;
+  }
+
+  .section-subtitle {
+    font-size: 0.85rem !important;
+  }
+
+  .brands-section,
+  .catalog-section {
+    padding: 2.5rem 1rem !important;
+  }
+
+  .brands-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  .brand-feature-card {
+    padding: 1.5rem 1.25rem !important;
+    border-radius: 12px !important;
+  }
+
+  .brand-logo-frame {
+    height: 125px !important;
+  }
+
+  /* ── Category Filter Tabs (Swipe Horizontal) ── */
   .category-tabs-bar,
   .subcategories-filter-bar {
     justify-content: flex-start !important;
     flex-wrap: nowrap !important;
     overflow-x: auto !important;
     -webkit-overflow-scrolling: touch !important;
-    padding-bottom: 0.5rem !important;
+    gap: 0.5rem !important;
+    padding: 0.3rem 0.2rem 0.6rem !important;
     scrollbar-width: none !important;
   }
+
   .category-tabs-bar::-webkit-scrollbar,
   .subcategories-filter-bar::-webkit-scrollbar {
     display: none !important;
   }
-  .section-tab-btn {
+
+  .section-tab-btn,
+  .subcat-pill-btn {
     white-space: nowrap !important;
-    padding: 0.65rem 1.25rem !important;
-    font-size: 0.75rem !important;
+    padding: 0.6rem 1.1rem !important;
+    font-size: 0.72rem !important;
     flex-shrink: 0 !important;
   }
 
-  /* Section Titles & Spacing */
-  .section-header {
-    margin-bottom: 2rem !important;
+  /* ── Product Catalog Grid: 2 Columns on Mobile (App Style) ── */
+  .products-grid,
+  #products-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
   }
-  .section-title {
-    font-size: 1.8rem !important;
+
+  .product-card {
+    border-radius: 8px !important;
   }
-  .brands-section,
-  .catalog-section {
-    padding: 3rem 1.25rem !important;
+
+  .product-card-img-wrap {
+    aspect-ratio: 3/4 !important;
   }
-  .brands-grid {
+
+  .product-card-info {
+    padding: 0.75rem 0.5rem !important;
+  }
+
+  .product-card-title {
+    font-size: 0.78rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .product-card-price {
+    font-size: 0.85rem !important;
+  }
+
+  .product-add-cart-btn {
+    padding: 0.55rem 0.5rem !important;
+    font-size: 0.66rem !important;
+    letter-spacing: 0.05em !important;
+  }
+
+  /* ── Instagram Grid 2-Column Mobile ── */
+  .instagram-section {
+    padding: 3rem 1rem !important;
+  }
+
+  .insta-feed-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+
+  /* ── Modals & Popups ── */
+  .gdr-popup-overlay {
+    padding: 0.75rem !important;
+  }
+
+  .gdr-popup-card {
+    padding: 2rem 1.25rem 1.25rem !important;
+    max-width: 95vw !important;
+    max-height: 88vh !important;
+    overflow-y: auto !important;
+    border-radius: 12px !important;
+  }
+
+  .gdr-popup-logo-wrap {
+    width: 56px !important;
+    height: 56px !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .gdr-popup-logo {
+    width: 56px !important;
+    height: 56px !important;
+  }
+
+  .gdr-popup-title {
+    font-size: 1.35rem !important;
+  }
+
+  .qv-modal-backdrop {
+    padding: 0.75rem !important;
+  }
+
+  .qv-modal-container {
+    max-height: 88vh !important;
+    border-radius: 12px !important;
+  }
+
+  .qv-grid {
     grid-template-columns: 1fr !important;
+    padding: 1.25rem !important;
     gap: 1.25rem !important;
+  }
+
+  .qv-title {
+    font-size: 1.4rem !important;
   }
 }
 
 @media (max-width: 480px) {
   .hero-label-bottom {
-    font-size: 1.75rem !important;
+    font-size: 1.7rem !important;
   }
+
   .preloader-title {
-    font-size: 1.8rem !important;
+    font-size: 1.7rem !important;
   }
 }
+
 
 
 
