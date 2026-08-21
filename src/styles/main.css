@@ -1,6 +1,15 @@
 @import './variables.css';
 @import './animations.css';
 
+/* Prevent accidental mobile zoom & horizontal scroll overflow */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  width: 100% !important;
+  touch-action: manipulation;
+  -webkit-text-size-adjust: 100%;
+}
+
 /* ─────────────────────────────────────────────────────
    CUSTOM CURSOR GODEROX (Desktop only)
 ───────────────────────────────────────────────────── */
@@ -707,7 +716,7 @@
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid rgba(200, 165, 91, 0.22);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.75), 0 1px 0 rgba(200, 165, 91, 0.15);
-  height: 88px;
+  height: 74px;
   transition: var(--transition-smooth);
 }
 
@@ -721,26 +730,27 @@
   justify-content: space-between;
 }
 
-/* CLEAN & PRO HEADER BRAND LOGO — SEAMLESS & PROMINENT */
+/* CLEAN & CASUAL HEADER BRAND LOGO — NATURALLY INTEGRATED */
 .header-logo-link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   text-decoration: none;
   height: 100%;
-  padding: 0.4rem 0;
+  padding: 0.2rem 0;
 }
 
 .header-brand-logo-img {
-  height: 64px;
+  height: 38px;
   width: auto;
   object-fit: contain;
-  border: none;
-  border-radius: 8px;
-  background: transparent;
-  box-shadow: none;
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6));
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  border: 1px solid rgba(200, 165, 91, 0.3);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.6));
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease, border-color 0.4s ease;
 }
+
 
 .header-logo-link:hover .header-brand-logo-img {
   transform: scale(1.06);
@@ -3410,16 +3420,18 @@
   }
 
   .header-wrapper {
-    height: 64px !important;
+    height: 60px !important;
   }
 
   .header-container {
-    padding: 0 1rem !important;
+    padding: 0 0.85rem !important;
   }
 
   .header-brand-logo-img {
-    height: 42px !important;
+    height: 30px !important;
+    border-radius: 5px !important;
   }
+
 
   .main-nav {
     display: none !important;
