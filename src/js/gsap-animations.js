@@ -226,7 +226,7 @@ function initHeroParallax() {
   const heroBtn   = document.querySelector('.hero-exclusive-btn');
   const heroStar  = document.querySelector('.hero-star-icon');
 
-  const tl = gsap.timeline({ delay: 0.3, defaults: { ease: 'expo.out' } });
+  const tl = gsap.timeline({ delay: 0, defaults: { ease: 'expo.out' } });
 
   // Lines draw
   if (ornTop)   tl.fromTo(ornTop,  { scaleX: 0, transformOrigin: 'center' }, { scaleX: 1, duration: 1.6 }, 0);
@@ -457,7 +457,6 @@ function initSideReveal() {
 //  MAIN ENTRY — waits for preloader then fires all animations
 // ─────────────────────────────────────────────────────────────
 function runAll() {
-  initMagneticCursor();
   initHeroParallax();
   initLineReveal();
   initClipReveal();
@@ -474,7 +473,7 @@ export function initGSAPAnimations() {
   initLenis();
 
   const preloader = document.getElementById('preloader');
-  const PRELOADER_DURATION = 3600; // ms
+  const PRELOADER_DURATION = 800; // ms — fires shortly after preloader fades
 
   if (preloader) {
     setTimeout(runAll, PRELOADER_DURATION);
