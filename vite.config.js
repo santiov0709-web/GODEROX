@@ -12,7 +12,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        admin: resolve(__dirname, 'admin.html')
+        panel: resolve(__dirname, 'gdr-sys-8x4k.html')
       }
     }
   }
