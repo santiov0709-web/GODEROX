@@ -3394,6 +3394,140 @@
   box-shadow: 0 12px 40px rgba(37, 211, 102, 0.65);
 }
 
+/* ─────────────────────────────────────────────────────
+   MOBILE RESPONSIVENESS & GRAPHIC FIXES (iOS & Android)
+───────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Preloader fixes */
+  .pl-corner {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .pl-corner-tl { top: 12px !important; left: 12px !important; }
+  .pl-corner-tr { top: 12px !important; right: 12px !important; }
+  .pl-corner-bl { bottom: 12px !important; left: 12px !important; }
+  .pl-corner-br { bottom: 12px !important; right: 12px !important; }
+  .preloader-title {
+    font-size: 2.2rem !important;
+    letter-spacing: 0.2em !important;
+  }
+
+  /* Header & Navigation */
+  .header-wrapper {
+    height: 72px !important;
+  }
+  .header-container {
+    padding: 0 1.25rem !important;
+  }
+  .header-brand-logo-img {
+    height: 48px !important;
+  }
+
+  /* Hero Section Mobile */
+  .hero-fullscreen-logo-section {
+    min-height: auto !important;
+    padding-top: 2rem !important;
+    padding-bottom: 3rem !important;
+  }
+  .hero-center-content {
+    min-height: auto !important;
+    padding: 3rem 1.25rem 2rem !important;
+    gap: 2.2rem !important;
+  }
+  .hero-logo-fullscreen-wrap {
+    width: clamp(240px, 75vw, 420px) !important;
+    height: clamp(240px, 75vw, 420px) !important;
+  }
+  .hero-luxury-text-block {
+    gap: 0.8rem !important;
+  }
+  .hero-label-top {
+    font-size: 0.82rem !important;
+    letter-spacing: 0.35em !important;
+  }
+  .hero-label-bottom {
+    font-size: clamp(1.8rem, 8vw, 3rem) !important;
+    letter-spacing: 0.08em !important;
+  }
+  .hero-ornament-top,
+  .hero-ornament-bottom {
+    width: 90vw !important;
+    gap: 0.6rem !important;
+  }
+  .hero-location-tag {
+    font-size: 0.58rem !important;
+    letter-spacing: 0.12em !important;
+    white-space: normal !important;
+    text-align: center !important;
+  }
+  .hero-exclusive-btn {
+    padding: 0.95rem 1.8rem !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 0.12em !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    justify-content: center !important;
+  }
+
+  /* VIP Club Popup Mobile */
+  .gdr-popup-card {
+    padding: 2.2rem 1.25rem 1.5rem !important;
+    max-width: 92vw !important;
+    max-height: 88vh !important;
+    overflow-y: auto !important;
+  }
+  .gdr-popup-title {
+    font-size: 1.4rem !important;
+  }
+
+  /* Category Filter Pills (Horizontal Scroll) */
+  .category-tabs-bar,
+  .subcategories-filter-bar {
+    justify-content: flex-start !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 0.5rem !important;
+    scrollbar-width: none !important;
+  }
+  .category-tabs-bar::-webkit-scrollbar,
+  .subcategories-filter-bar::-webkit-scrollbar {
+    display: none !important;
+  }
+  .section-tab-btn {
+    white-space: nowrap !important;
+    padding: 0.65rem 1.25rem !important;
+    font-size: 0.75rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Section Titles & Spacing */
+  .section-header {
+    margin-bottom: 2rem !important;
+  }
+  .section-title {
+    font-size: 1.8rem !important;
+  }
+  .brands-section,
+  .catalog-section {
+    padding: 3rem 1.25rem !important;
+  }
+  .brands-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-label-bottom {
+    font-size: 1.75rem !important;
+  }
+  .preloader-title {
+    font-size: 1.8rem !important;
+  }
+}
+
+
 
 
 

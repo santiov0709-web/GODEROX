@@ -125,6 +125,7 @@ window.getGlobalProduct = function(productId) {
 
 document.addEventListener('DOMContentLoaded', async () => {
   initPreloader();
+  initGSAPAnimations();
   initHeader();
   initCountdown();
   initScrollReveal();
@@ -166,7 +167,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   setupQuickView();
   setupLookbook();
   setupVipGate();
-  initGSAPAnimations();
 
   window.addEventListener('storage', (e) => {
     if (e.key === 'goderox_products_db') refreshProductList();
@@ -529,6 +529,7 @@ function initPreloader() {
       setTimeout(() => {
         preloader.classList.add('fade-out');
         document.body.style.overflow = '';
+        window.__goderoxReady = true;
         // Signal to GSAP animations that preloader is done
         document.dispatchEvent(new CustomEvent('goderox:ready'));
         // Show VIP popup after preloader fades (only once per day)

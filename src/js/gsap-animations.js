@@ -16,6 +16,11 @@ gsap.registerPlugin(ScrollTrigger);
 //  1. LENIS SMOOTH SCROLL  (silky 60fps momentum-based scroll)
 // ─────────────────────────────────────────────────────────────
 export function initLenis() {
+  // Disable Lenis on mobile/touch devices for smooth native touch scrolling
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth <= 768) {
+    return null;
+  }
+
   const lenis = new Lenis({
     duration: 1.4,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // expo ease
@@ -33,6 +38,7 @@ export function initLenis() {
   window.__lenis = lenis;
   return lenis;
 }
+
 
 // ─────────────────────────────────────────────────────────────
 //  2. MAGNETIC CURSOR  (real attraction physics — not just scale)
@@ -469,16 +475,25 @@ function runAll() {
 }
 
 export function initGSAPAnimations() {
-  // Init Lenis smooth scroll first — always
+
+  // Init Lenis smooth scroll on desktop non-touch screens
   initLenis();
+
+  let ran = false;
+  const triggerRunAll = () => {
+    if (ran) return;
+    ran = true;
+    runAll();
+  };
 
   const preloader = document.getElementById('preloader');
 
-  if (preloader) {
-    // Listen for the exact moment the preloader starts fading out
-    document.addEventListener('goderox:ready', runAll, { once: true });
+  // If preloader doesn't exist, is already hidden, or event already fired -> run immediately
+  if (!preloader || preloader.style.display === 'none' || preloader.classList.contains('fade-out') || window.__goderoxReady) {
+    triggerRunAll();
   } else {
-    // No preloader — fire immediately
-    runAll();
+    document.addEventListener('goderox:ready', triggerRunAll, { once: true });
+    // Safety fallback: if event is missed for any reason, force runAll after 1.2s max
+    setTimeout(triggerRunAll, 1200);
   }
 }
