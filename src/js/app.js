@@ -1004,45 +1004,37 @@ function initCheckoutModal() {
       const now = new Date();
       const orderDate = now.toLocaleDateString('es-CO', { day: '2-digit', month: '2-digit', year: 'numeric' });
 
-      // Detalle de los ítems del pedido con enlace absoluto a la imagen para vista previa en WhatsApp
+      // Detalle elegante de los ítems del pedido sin URLs de imagen largas
       const itemLines = cart.cart
-        .map((it) => {
-          let imgUrl = it.image;
-          try {
-            imgUrl = new URL(it.image, window.location.origin).href;
-          } catch(e){}
-          
-          return `✦ *${it.name}*\n   Talla: ${it.size} | Cant: ${it.quantity} | ${cart.formatPrice(it.priceUSD * it.quantity)}\n   Enlace: ${imgUrl}`;
-        })
+        .map((it) => `✦ *${it.name}*\n   Talla: ${it.size} | Cantidad: ${it.quantity} | ${cart.formatPrice(it.priceUSD * it.quantity)}`)
         .join('\n\n');
 
       // Construcción del mensaje minimalista de lujo para GODEROX
-      let msg = `*GODEROX* ✨\n\n`;
-      msg += `*Orden:* #${orderRef}\n`;
+      let msg = `*GODEROX* ✦ *ORDEN #${orderRef}*\n`;
       msg += `*Fecha:* ${orderDate}\n\n`;
 
-      msg += `*Envío a:*\n`;
-      msg += `${name}\n`;
-      msg += `${phone}\n`;
-      msg += `${address}\n\n`;
+      msg += `*CLIENTE:*\n`;
+      msg += `• Nombre: ${name}\n`;
+      msg += `• Teléfono: ${phone}\n`;
+      msg += `• Dirección: ${address}\n\n`;
 
-      msg += `*Piezas (${totals.totalCount}):*\n`;
+      msg += `*PIEZAS PEDIDAS (${totals.totalCount}):*\n`;
       msg += `${itemLines}\n\n`;
 
-      msg += `*Resumen:*\n`;
+      msg += `*RESUMEN DE PAGO:*\n`;
       msg += `Subtotal: ${totals.subtotalFormatted}\n`;
       if (totals.discountUSD > 0) {
         msg += `Descuento VIP: -${totals.discountFormatted}\n`;
       }
-      msg += `*Total: ${totals.totalFormatted}*\n\n`;
-
-      msg += `*Pago:* ${paymentMethod}\n`;
+      msg += `*Total a Pagar: ${totals.totalFormatted}*\n`;
+      msg += `*Método:* ${paymentMethod}\n`;
       if (notes) {
-        msg += `*Nota:* ${notes}\n`;
+        msg += `*Notas:* ${notes}\n`;
       }
-      msg += `\nHola equipo GODEROX, mi pedido está confirmado en la web. Quedo atento(a) para proceder con el pago. 🖤`;
+      msg += `\n_Hola equipo GODEROX, he confirmado este pedido desde la web. Quedo atento(a) para proceder con el pago y envío._ 🖤`;
 
       const waUrl = `https://wa.me/573046599888?text=${encodeURIComponent(msg)}`;
+
 
       audio.playChime();
 
