@@ -488,35 +488,105 @@ function initCategoryFilters() {
   updateSubcategoriesBar(activeSection);
 }
 
-/* ULTRA LUXURY PRELOADER ANIMATION */
+/* CINEMATIC PRELOADER ANIMATION */
 function initPreloader() {
   const preloader = document.getElementById('preloader');
   const bar = document.getElementById('preloader-bar');
   const percentEl = document.getElementById('preloader-percent');
+  const statusEl = document.getElementById('preloader-status');
 
   if (!preloader) return;
 
   document.body.style.overflow = 'hidden';
 
+  const statusMessages = [
+    'CARGANDO COLECCIÓN...',
+    'PREPARANDO EL CATÁLOGO...',
+    'SINCRONIZANDO INVENTARIO...',
+    'CASI LISTO...',
+  ];
+  let statusIdx = 0;
+  const statusInterval = setInterval(() => {
+    statusIdx = (statusIdx + 1) % statusMessages.length;
+    if (statusEl) statusEl.textContent = statusMessages[statusIdx];
+  }, 900);
+
   let progress = 0;
   const interval = setInterval(() => {
-    progress += Math.floor(Math.random() * 12) + 8;
-    if (progress >= 100) {
-      progress = 100;
-      clearInterval(interval);
+    const step = Math.floor(Math.random() * 10) + 6;
+    progress = Math.min(progress + step, 100);
 
-      if (bar) bar.style.width = '100%';
-      if (percentEl) percentEl.textContent = '100%';
+    if (bar) bar.style.width = `${progress}%`;
+    if (percentEl) percentEl.textContent = `${progress}%`;
+
+    if (progress >= 100) {
+      clearInterval(interval);
+      clearInterval(statusInterval);
+      if (statusEl) statusEl.textContent = 'BIENVENIDO A GODEROX';
 
       setTimeout(() => {
         preloader.classList.add('fade-out');
         document.body.style.overflow = '';
-      }, 350);
-    } else {
-      if (bar) bar.style.width = `${progress}%`;
-      if (percentEl) percentEl.textContent = `${progress}%`;
+        // Show VIP popup after preloader fades (only once per day)
+        setTimeout(() => initWelcomePopup(), 800);
+      }, 500);
     }
-  }, 40);
+  }, 45);
+}
+
+/* VIP WELCOME POPUP */
+function initWelcomePopup() {
+  const popup = document.getElementById('gdr-welcome-popup');
+  const closeBtn = document.getElementById('gdr-popup-close');
+  const skipBtn = document.getElementById('gdr-popup-skip');
+  const form = document.getElementById('gdr-popup-form');
+  const successEl = document.getElementById('gdr-popup-success');
+
+  if (!popup) return;
+
+  // Only show once per day
+  const lastShown = localStorage.getItem('gdr_popup_shown');
+  const today = new Date().toDateString();
+  if (lastShown === today) return;
+
+  // Show popup
+  popup.classList.add('active');
+  document.body.style.overflow = 'hidden';
+
+  const closePopup = () => {
+    popup.classList.remove('active');
+    document.body.style.overflow = '';
+    localStorage.setItem('gdr_popup_shown', today);
+  };
+
+  closeBtn?.addEventListener('click', closePopup);
+  skipBtn?.addEventListener('click', closePopup);
+  popup.addEventListener('click', (e) => {
+    if (e.target === popup) closePopup();
+  });
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('gdr-popup-name')?.value?.trim();
+    const email = document.getElementById('gdr-popup-email')?.value?.trim();
+
+    if (!name || !email) return;
+
+    // Save subscriber to localStorage (list)
+    const subscribers = JSON.parse(localStorage.getItem('gdr_subscribers') || '[]');
+    const alreadyExists = subscribers.some(s => s.email === email);
+    if (!alreadyExists) {
+      subscribers.push({ name, email, date: new Date().toISOString() });
+      localStorage.setItem('gdr_subscribers', JSON.stringify(subscribers));
+    }
+
+    // Show success state
+    form.style.display = 'none';
+    if (successEl) successEl.style.display = 'block';
+    localStorage.setItem('gdr_popup_shown', today);
+
+    setTimeout(closePopup, 3000);
+  });
 }
 
 /* HIGH FASHION SCROLL REVEAL CONTROLLER */

@@ -2,25 +2,23 @@
    GODEROX ADMIN PANEL — Premium Design System
    ===================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cinzel:wght@400;600;700&display=swap');
-
 /* ─── RESET & TOKENS ─── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --gold: #C8A55B;
-  --gold-light: #E5C378;
-  --gold-gradient: linear-gradient(135deg, #C8A55B 0%, #E5C378 50%, #C8A55B 100%);
-  --bg-dark: #0a0a0a;
-  --bg-card: #141414;
+  --gold: var(--gold-primary);
+  --gold-light: var(--gold-light);
+  --gold-gradient: var(--gold-gradient);
+  --bg-dark: var(--bg-primary);
+  --bg-card: var(--bg-secondary);
   --bg-panel: #111111;
   --bg-input: #1a1a1a;
-  --bg-hover: #1f1f1f;
-  --border: rgba(255,255,255,0.08);
-  --border-gold: rgba(200,165,91,0.3);
-  --text-primary: #FFFFFF;
-  --text-secondary: rgba(255,255,255,0.6);
-  --text-muted: rgba(255,255,255,0.35);
+  --bg-hover: var(--bg-card-hover);
+  --border: var(--border-light);
+  --border-gold: var(--border-gold);
+  --text-primary: var(--text-primary);
+  --text-secondary: var(--text-secondary);
+  --text-muted: var(--text-muted);
   --success: #22c55e;
   --error: #ef4444;
   --warning: #f59e0b;
@@ -29,26 +27,20 @@
   --topbar-h: 64px;
   --radius: 8px;
   --radius-sm: 5px;
-  --shadow: 0 4px 20px rgba(0,0,0,0.4);
-  --shadow-gold: 0 4px 20px rgba(200,165,91,0.2);
-  --transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+  --shadow: var(--shadow-subtle);
+  --shadow-gold: 0 4px 20px rgba(200, 165, 91, 0.15);
+  --transition: var(--transition-smooth);
 }
 
 html, body { height: 100%; }
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 14px;
   background: var(--bg-dark);
   color: var(--text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
-
-/* ─── SCROLLBAR ─── */
-::-webkit-scrollbar { width: 5px; height: 5px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(200,165,91,0.3); border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: var(--gold); }
 
 /* ─── LOGIN SCREEN ─── */
 #admin-login-screen {

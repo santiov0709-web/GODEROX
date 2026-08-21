@@ -17,20 +17,126 @@
 </head>
 <body>
 
-  <!-- LUXURY PRELOADER PANTALLA DE CARGA -->
+  <!-- ═══ CINEMATIC PRELOADER ═══ -->
   <div id="preloader" class="preloader-overlay">
+    <!-- Ambient particles -->
+    <div class="preloader-particles">
+      <span class="pl-particle pl-p1"></span>
+      <span class="pl-particle pl-p2"></span>
+      <span class="pl-particle pl-p3"></span>
+      <span class="pl-particle pl-p4"></span>
+      <span class="pl-particle pl-p5"></span>
+      <span class="pl-particle pl-p6"></span>
+    </div>
+
+    <!-- Top-left corner ornament -->
+    <svg class="pl-corner pl-corner-tl" width="60" height="60" viewBox="0 0 60 60" fill="none">
+      <path d="M2 58 L2 2 L58 2" stroke="rgba(200,165,91,0.5)" stroke-width="1" fill="none"/>
+      <circle cx="2" cy="2" r="3" fill="rgba(200,165,91,0.8)"/>
+    </svg>
+    <!-- Top-right corner ornament -->
+    <svg class="pl-corner pl-corner-tr" width="60" height="60" viewBox="0 0 60 60" fill="none">
+      <path d="M58 58 L58 2 L2 2" stroke="rgba(200,165,91,0.5)" stroke-width="1" fill="none"/>
+      <circle cx="58" cy="2" r="3" fill="rgba(200,165,91,0.8)"/>
+    </svg>
+    <!-- Bottom-left corner ornament -->
+    <svg class="pl-corner pl-corner-bl" width="60" height="60" viewBox="0 0 60 60" fill="none">
+      <path d="M2 2 L2 58 L58 58" stroke="rgba(200,165,91,0.5)" stroke-width="1" fill="none"/>
+      <circle cx="2" cy="58" r="3" fill="rgba(200,165,91,0.8)"/>
+    </svg>
+    <!-- Bottom-right corner ornament -->
+    <svg class="pl-corner pl-corner-br" width="60" height="60" viewBox="0 0 60 60" fill="none">
+      <path d="M58 2 L58 58 L2 58" stroke="rgba(200,165,91,0.5)" stroke-width="1" fill="none"/>
+      <circle cx="58" cy="58" r="3" fill="rgba(200,165,91,0.8)"/>
+    </svg>
+
     <div class="preloader-content">
+      <!-- Orbiting ring logo -->
       <div class="preloader-logo-wrap">
-        <img src="/images/goderox_official_logo.jpeg" alt="GODEROX Official Logo" class="preloader-logo-img" />
-        <div class="preloader-logo-ring"></div>
+        <div class="pl-orbit-ring pl-orbit-1"></div>
+        <div class="pl-orbit-ring pl-orbit-2"></div>
+        <img src="/images/goderox_official_logo.jpeg" alt="GODEROX" class="preloader-logo-img" />
       </div>
-      <h2 class="preloader-title gold-text-shimmer">GODEROX</h2>
-      <span class="preloader-tagline">✦ SABANETA · MALL ZONA SUR LC-101 ✦</span>
-      
-      <div class="preloader-progress-track">
-        <div class="preloader-progress-fill" id="preloader-bar"></div>
+
+      <!-- Brand identity block -->
+      <div class="pl-brand-block">
+        <div class="pl-overline">✦ EST. 2024 · COLOMBIA ✦</div>
+        <h2 class="preloader-title" id="preloader-brand-title">GODEROX</h2>
+        <div class="pl-divider"><span></span><span class="pl-diamond">◆</span><span></span></div>
+        <p class="pl-brand-desc">ROPA MULTIMARCA DE ALTA GAMA</p>
       </div>
-      <span class="preloader-percentage" id="preloader-percent">0%</span>
+
+      <!-- Progress system -->
+      <div class="pl-progress-section">
+        <div class="preloader-progress-track">
+          <div class="preloader-progress-fill" id="preloader-bar">
+            <span class="pl-progress-glow"></span>
+          </div>
+        </div>
+        <div class="pl-progress-labels">
+          <span class="pl-status-text" id="preloader-status">CARGANDO COLECCIÓN...</span>
+          <span class="preloader-percentage" id="preloader-percent">0%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ POPUP BIENVENIDA GODEROX VIP ═══ -->
+  <div class="gdr-popup-overlay" id="gdr-welcome-popup">
+    <div class="gdr-popup-card">
+      <!-- Corner ornaments -->
+      <svg class="gdr-pop-corner gdr-pop-tl" width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M1 39 L1 1 L39 1" stroke="rgba(200,165,91,0.6)" stroke-width="1.5" fill="none"/></svg>
+      <svg class="gdr-pop-corner gdr-pop-tr" width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M39 39 L39 1 L1 1" stroke="rgba(200,165,91,0.6)" stroke-width="1.5" fill="none"/></svg>
+      <svg class="gdr-pop-corner gdr-pop-bl" width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M1 1 L1 39 L39 39" stroke="rgba(200,165,91,0.6)" stroke-width="1.5" fill="none"/></svg>
+      <svg class="gdr-pop-corner gdr-pop-br" width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M39 1 L39 39 L1 39" stroke="rgba(200,165,91,0.6)" stroke-width="1.5" fill="none"/></svg>
+
+      <!-- Close button -->
+      <button class="gdr-popup-close" id="gdr-popup-close" aria-label="Cerrar">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <!-- Logo mark -->
+      <div class="gdr-popup-logo-wrap">
+        <img src="/images/goderox_official_logo.jpeg" alt="GODEROX" class="gdr-popup-logo" />
+        <div class="gdr-popup-logo-aura"></div>
+      </div>
+
+      <!-- Headline -->
+      <div class="gdr-popup-overline">✦ CLUB VIP GODEROX ✦</div>
+      <h2 class="gdr-popup-title">Accede al
+        <span class="gdr-popup-title-gold">Club Exclusivo</span>
+      </h2>
+      <p class="gdr-popup-subtitle">Sé el primero en conocer nuevos drops, descuentos VIP y acceso anticipado a colecciones limitadas.</p>
+
+      <!-- Perks -->
+      <ul class="gdr-popup-perks">
+        <li><span class="gdr-perk-icon">◆</span> Descuentos exclusivos para miembros</li>
+        <li><span class="gdr-perk-icon">◆</span> Acceso prioritario a drops limitados</li>
+        <li><span class="gdr-perk-icon">◆</span> Notificaciones de nuevas llegadas</li>
+      </ul>
+
+      <!-- Form -->
+      <form class="gdr-popup-form" id="gdr-popup-form">
+        <div class="gdr-popup-field">
+          <input type="text" id="gdr-popup-name" class="gdr-popup-input" placeholder="Tu nombre" autocomplete="given-name" required />
+        </div>
+        <div class="gdr-popup-field">
+          <input type="email" id="gdr-popup-email" class="gdr-popup-input" placeholder="tu@correo.com" autocomplete="email" required />
+        </div>
+        <button type="submit" class="gdr-popup-btn">
+          <span>UNIRME AL CLUB VIP</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </form>
+
+      <!-- Success state (hidden) -->
+      <div class="gdr-popup-success" id="gdr-popup-success" style="display:none;">
+        <div class="gdr-success-icon">✦</div>
+        <h3>¡Bienvenido al Club!</h3>
+        <p>Ya eres parte de la familia GODEROX. Recibirás nuestras novedades y descuentos exclusivos.</p>
+      </div>
+
+      <button class="gdr-popup-skip" id="gdr-popup-skip">No por ahora</button>
     </div>
   </div>
 
