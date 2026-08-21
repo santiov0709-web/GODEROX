@@ -6,19 +6,16 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --gold: var(--gold-primary);
-  --gold-light: var(--gold-light);
-  --gold-gradient: var(--gold-gradient);
-  --bg-dark: var(--bg-primary);
-  --bg-card: var(--bg-secondary);
+  /* Admin-specific aliases pointing to global variables.css tokens */
+  --gold: #C8A55B;
+  --gold-gradient-admin: linear-gradient(135deg, #E8D5A3 0%, #C8A55B 50%, #9A7B39 100%);
+  --bg-dark: #0A0A0A;
+  --bg-card: #161616;
   --bg-panel: #111111;
   --bg-input: #1a1a1a;
-  --bg-hover: var(--bg-card-hover);
-  --border: var(--border-light);
-  --border-gold: var(--border-gold);
-  --text-primary: var(--text-primary);
-  --text-secondary: var(--text-secondary);
-  --text-muted: var(--text-muted);
+  --bg-hover: #1F1F1F;
+  --border: rgba(255,255,255,0.08);
+  --border-gold-admin: rgba(200,165,91,0.3);
   --success: #22c55e;
   --error: #ef4444;
   --warning: #f59e0b;
@@ -27,20 +24,21 @@
   --topbar-h: 64px;
   --radius: 8px;
   --radius-sm: 5px;
-  --shadow: var(--shadow-subtle);
-  --shadow-gold: 0 4px 20px rgba(200, 165, 91, 0.15);
-  --transition: var(--transition-smooth);
+  --shadow: 0 4px 20px rgba(0,0,0,0.5);
+  --shadow-gold-admin: 0 4px 20px rgba(200,165,91,0.15);
+  --transition-admin: all 0.2s cubic-bezier(0.4,0,0.2,1);
 }
 
 html, body { height: 100%; }
 body {
-  font-family: var(--font-sans);
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 14px;
   background: var(--bg-dark);
-  color: var(--text-primary);
+  color: #FFFFFF;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
+
 
 /* ─── LOGIN SCREEN ─── */
 #admin-login-screen {
