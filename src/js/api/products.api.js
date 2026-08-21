@@ -6,6 +6,8 @@ import { supabase } from '../supabase.js';
  * @param {Object} filters - { section, categorySlug, isPromo, isActive }
  */
 export async function getAllProducts(filters = {}) {
+  if (!supabase) return [];
+
   let query = supabase
     .from('products')
     .select(`

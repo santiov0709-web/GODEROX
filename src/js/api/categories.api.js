@@ -2,6 +2,8 @@
 import { supabase } from '../supabase.js';
 
 export async function getAllCategories(filters = {}) {
+  if (!supabase) return [];
+
   let query = supabase
     .from('categories')
     .select('*')

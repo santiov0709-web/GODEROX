@@ -2,6 +2,8 @@
 import { supabase } from '../supabase.js';
 
 export async function getAllBrands(activeOnly = false) {
+  if (!supabase) return [];
+
   let query = supabase
     .from('brands')
     .select('*')
